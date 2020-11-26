@@ -19,6 +19,40 @@ As well as the implementation of a Binary Tree.
 ## Merge Sort
 **Merge Sort** is a sorting algorithm that utilises a ***Divide and Conquer*** approach to sorting a list of elements. It does this by splitting the list in half then Merge Sorts each half individually. It does this recursion until the lists that It is sorting are each 1 element in size. At his point, the elements are compared and merged into a sorted list which is then returned. This means that at every recursion, you will get two sorted lists to merge together then return. Merging two sorted arrays into another sorted array can be done in linear time which gives Merge Sort an overall runtime of O(nlog(n)).
 
+### Implementation:
+
+```java
+private <T extends Comparable<T>> T[] sort(T[] lowerArray, T[] upperArray) throws SortingException, MergingException {
+        if (lowerArray.length == 1 || upperArray.length == 1) {
+            if (lowerArray.length > 1) {
+                int lowerArrayMidPoint = lowerArray.length/2;
+                T[] lowerLowerArray = Arrays.copyOfRange(lowerArray, 0, lowerArrayMidPoint);
+                T[] upperLowerArray = Arrays.copyOfRange(lowerArray, lowerArrayMidPoint, lowerArray.length);
+                T[] sortedLower = sort(lowerLowerArray, upperLowerArray);
+                return Merger.merge(sortedLower, upperArray);
+            } else if (upperArray.length > 1) {
+                int upperArrayMidPoint = upperArray.length/2;
+                T[] lowerUpperArray = Arrays.copyOfRange(upperArray, 0, upperArrayMidPoint);
+                T[] upperUpperArray = Arrays.copyOfRange(upperArray, upperArrayMidPoint, upperArray.length);
+                T[] sortedUpper = sort(lowerUpperArray, upperUpperArray);
+                return Merger.merge(lowerArray, sortedUpper);
+            } else {
+                return Merger.merge(lowerArray, upperArray);
+            }
+        } else {
+            int lowerArrayMidPoint = lowerArray.length/2;
+            int upperArrayMidPoint = upperArray.length/2;
+            T[] lowerLowerArray = Arrays.copyOfRange(lowerArray, 0, lowerArrayMidPoint);
+            T[] upperLowerArray = Arrays.copyOfRange(lowerArray, lowerArrayMidPoint, lowerArray.length);
+            T[] lowerUpperArray = Arrays.copyOfRange(upperArray, 0, upperArrayMidPoint);
+            T[] upperUpperArray = Arrays.copyOfRange(upperArray, upperArrayMidPoint, upperArray.length);
+            T[] sortedLower = sort(lowerLowerArray, upperLowerArray);
+            T[] sortedUpper = sort(lowerUpperArray, upperUpperArray);
+            return Merger.merge(sortedLower, sortedUpper);
+        }
+    }
+```
+
 ## Bubble Sort
 **Bubble Sort** is another sorting algorithm that iteratively sorts a list of elements. It does this through comparing the first two elements in the list, if the left element is larger, swap them else leave them how they were. It then goes on two the 2nd and 3rd elements in the list and so on and so forth. Through doing this, over the process of one iteration, it moves the largest element to the end of the list. This is then performed again, ignoring the final element as that one is already sorted. Since in the worst case **Bubble Sort** needs to go through all n elements n-1 times, it gives **Bubble Sort** a worst case runtime of O(n<sup>2</sup>-n) which simplifies to O(n<sup>2</sup>). This makes it significantly slower than Merge Sort as the number of elements increases.
 
