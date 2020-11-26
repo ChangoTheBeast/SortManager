@@ -13,7 +13,7 @@ As well as the implementation of a Binary Tree.
 2. [Bubble Sort](#bubble-sort)
 3. [Binary Sort](#binary-sort)
 4. [Binary Tree](#binary-tree)
-5. [Implementation](#implementation)
+5. [Implementation](#implementation-cat)
 6. [Complexity Check](#complexity-check)
 
 ## Merge Sort
@@ -150,7 +150,7 @@ private List<? extends T> getSortedTreeAsc(Node<T> node) {
 }
 ```
 
-## Implementation
+## Implementation <a name="implementation-cat"></a>
 In this project, the Binary Tree Interface and Sorter Interface were implemented with generic solutions.This allowed fora binary tree of any comparable type to be instantiated, as well as any comparable array to be sorted. The was done to make the code much more open to future extension.
 
 ## Complexity Check
