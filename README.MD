@@ -58,47 +58,47 @@ private <T extends Comparable<T>> T[] sort(T[] lowerArray, T[] upperArray) throw
 
 This project contains two implementations of bubble sort:
 - Iterative:
- - ```java
-   public <T extends Comparable<T>> T[] sortIterative(T[] array, int size) {
-        if (size > 0) {
-            for (int i = size; i >= 0; i--) {
-                boolean sorted = true;
-                for (int j = 0; j < size; j++) {
-                    if (j+1 < i) {
-                        if (array[j].compareTo(array[j+1]) > 0) {
-                            sorted = false;
-                            T temp = array[j+1];
-                            array[j+1] = array[j];
-                            array[j] = temp;
-                        }
-                    }
-                }
-                if (sorted) {
-                    return array;
-                }
-            }
-        }
-        return array;
-    }
-   ```
+ ```java
+ public <T extends Comparable<T>> T[] sortIterative(T[] array, int size) {
+      if (size > 0) {
+          for (int i = size; i >= 0; i--) {
+              boolean sorted = true;
+              for (int j = 0; j < size; j++) {
+                  if (j+1 < i) {
+                      if (array[j].compareTo(array[j+1]) > 0) {
+                          sorted = false;
+                          T temp = array[j+1];
+                          array[j+1] = array[j];
+                          array[j] = temp;
+                      }
+                  }
+              }
+              if (sorted) {
+                  return array;
+              }
+          }
+      }
+      return array;
+  }
+ ```
 - Recursive:
- - ```java
-   public <T extends Comparable<T>> T[] sortRecursive(T[] array, int size) {
-       if (size > 0) {
-           for (int i = 0; i < size; i++) {
-               if (i+1 < array.length) {
-                   if (array[i].compareTo(array[i+1]) > 0) {
-                       T temp = array[i+1];
-                       array[i+1] = array[i];
-                       array[i] = temp;
-                   }
-               }
-           }
-           return sortRecursive(array, size-1);
-       }
-       return array;
-   }
-   ```
+ ```java
+ public <T extends Comparable<T>> T[] sortRecursive(T[] array, int size) {
+     if (size > 0) {
+         for (int i = 0; i < size; i++) {
+             if (i+1 < array.length) {
+                 if (array[i].compareTo(array[i+1]) > 0) {
+                     T temp = array[i+1];
+                     array[i+1] = array[i];
+                     array[i] = temp;
+                 }
+             }
+         }
+         return sortRecursive(array, size-1);
+     }
+     return array;
+ }
+ ```
 
 ## Binary Sort
 **Binary Sort** utilises Binary Trees to sort a list of elements. The Binary Tree stores the elements in the list such that all elements smaller than the root element go to the left of it, and all elements larger than it go to the right of it. This happens for all elements such that each element has a left and/or right right node unless it is a terminal node. This tree is then returned from the left most elements to the rightmost elements which gives a sorted list. This also has a worst case runtime of O(nlog(n)) since the depth of the tree is at most log(n) elements and every element must be gone through.
