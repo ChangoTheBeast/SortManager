@@ -8,6 +8,14 @@ This Sort Manager contains the implementation of 3 sorting algorithms, namely:
 
 As well as the implementation of a Binary Tree.
 
+## Table Of Contents:
+1. [Merge Sort](#merge-sort)
+2. [Bubble Sort](#bubble-sort)
+3. [Binary Sort](#binary-sort)
+4. [Binary Tree](#binary-tree)
+5. [Implementation](#implementation)
+6. [Complexity Check](#complexity-check)
+
 ## Merge Sort
 **Merge Sort** is a sorting algorithm that utilises a ***Divide and Conquer*** approach to sorting a list of elements. It does this by splitting the list in half then Merge Sorts each half individually. It does this recursion until the lists that It is sorting are each 1 element in size. At his point, the elements are compared and merged into a sorted list which is then returned. This means that at every recursion, you will get two sorted lists to merge together then return. Merging two sorted arrays into another sorted array can be done in linear time which gives Merge Sort an overall runtime of O(nlog(n)).
 
